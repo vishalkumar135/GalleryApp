@@ -1,0 +1,76 @@
+<main style="overflow-x: hidden;" >
+
+
+<div class="mb-5 bg2 pt-2  pd font-italic ">  
+
+      <div class="textc2"> <h6>Album Name : <%= @album.title %></h6></div>
+       <div class="textc2 font-italic d-inline">
+      <h6>Description:  <%= @album.Description %> </h6>
+      <span class="float-right  bg2 d-inline textc2 totalimg">Total images: <%= @album.images.count %> </span> 
+   
+   </div>
+
+ <div class="imgd width-10" >
+  
+<button class="imgb width-10" >
+    
+  Add Images To Album
+  <%=form_with model: @album ,html: { id: :formimg } do |form|%>
+    <%= form.file_field :images ,multiple: true,class:'img width-10' ,id:'img', accept: 'image/png,image/gif,image/jpeg'%>
+     <% end %>
+   </button> 
+
+<script>
+ 
+   document.getElementById("img").onchange=function() {
+    
+    document.getElementById("formimg").submit();
+  
+    
+}
+ </script>
+
+
+</div>
+   </div>
+      
+<div class="container cardd">
+
+      <% if @album.images.attached? %>
+             <% @album.images.each do |image|%>
+    <div class="card-group col-md-4 col-sm-12 col-lg-4 d-inline-flex h-100 mb-10-show">
+      
+      <div class="card h-100">
+
+     <div class="card-header p-20 ">
+     <%= link_to delete_image_attachment_album_path(image.signed_id),method: :delete,data:{ confirm:'Are you sure'} do%>
+                   <i class="fa fa-times float-right" aria-hidden="true"></i>
+                   <%end%>
+        </div>
+      
+       
+ 
+            <div class="card-body ">
+
+
+            <a href= <%=Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true)%> data-fancybox > 
+               <img src="<%=Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true)%>" class="imgs" alt="">
+               
+               </a>
+            
+            </div>                   
+                     
+       </div>
+   </div>
+       <%end%>
+     <%end%>                               
+   
+
+</div>
+
+   <div class="mt-0 textc1">      
+ <%= link_to 'Back', albums_path,class:"btn bg3 mb-5"%>  
+</div>
+
+      
+</main>

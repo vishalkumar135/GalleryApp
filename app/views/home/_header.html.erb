@@ -1,0 +1,63 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar bg ">
+  
+  <%= link_to'Gallary App', root_path , class:"navbar-brand textc3"%>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+     
+   
+      <li class="nav-item ">
+       
+        <%= link_to'Albums', albums_path , class:"nav-link textc3"%>
+      </li>
+      
+     <% if user_signed_in? %>
+
+        <li class="nav-item">
+       
+        <%= link_to'Drafts',  albums_draft_path , class:"nav-link textc3 "%>
+      </li>
+        <li class="nav-item">
+       
+        <%= link_to'Add Albums', new_album_path , class:"nav-link textc3"%>
+      </li>
+         
+       <li class="nav-item">
+       
+         <%= link_to'Edit Profile', edit_user_registration_path , class:"nav-link textc3"%>
+       </li>
+
+          <li class="nav-item navitems">
+        <%= link_to'Sign Out', destroy_user_session_path, :method => :delete , class:"nav-link textc3"%>
+       </li>
+       
+            <li class="nav-item username navitemn textc3">
+        <%= current_user.username.titleize%>
+       </li> 
+
+       
+      
+   
+              
+           
+    <% else %>
+        
+     <li class="nav-item">
+       
+        <%= link_to'Sign Up', new_user_registration_path , class:"nav-link  navitems signup"%>
+      </li>
+      <li class="nav-item">
+       
+        <%= link_to'Sign In', new_user_session_path , class:"nav-link textc3  signin "%>
+       </li>
+       
+      
+      <%end%>
+       
+    </ul>
+  
+  </div>
+</nav>
