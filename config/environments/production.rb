@@ -127,8 +127,8 @@ Rails.application.configure do
   domain:               'gmail.com',
   user_name:            'kumarasvishal@gmail.com',
   password:             'Vishal18352@',
-  # authentication:       'plain',
-  enable_starttls_auto: true,
+  authentication:       'plain',
+  # enable_starttls_auto: true,
   open_timeout:         5,
   read_timeout:         5 }
 
