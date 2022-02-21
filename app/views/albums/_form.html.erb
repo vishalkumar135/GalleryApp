@@ -1,92 +1,71 @@
- <%= form_with model: @album do |form| %>
-
-<% if @album.errors.any? %>
-  <div id="error_explanation">
-    <h6 class="text-danger ml-4"><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h6>
-
-    <ul>
-      <% @album.errors.each do |error| %>
-        <li class="text-danger"><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-
-
-  <div class="field form-group form-g ">
-    <%= form.label :title %>
-    <%= form.text_field :title , class: 'form-control', placeholder:"Title"%>
-
-       <% @album.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <%end%>
-
-
+<%=form_with model: @album do |form| %>
+    <% if @album.errors.any? %>
+          <div id="error_explanation">
+            <h6 class="text-danger ml-4"><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h6>
+            <ul>
+                 <% @album.errors.each do |error| %>
+                    <li class="text-danger">
+                       <%=error.full_message %>
+                    </li>
+                 <% end %>
+               </ul>
+           </div>
+        <% end %>
+     <div class="field form-group form-g ">
+            <%=form.label :title %>
+            <%=form.text_field :title , class: 'form-control', placeholder: "Title"%>
+             <% @album.errors.full_messages_for(:title).each do |message| %>
+                   <div>
+                    <%=message%>
+                   </div>
+               <%end%>
        </div>
-
-  <div class="field form-group form-g">
-    <%= form.label :Description %>
-    <%= form.text_area :Description , class: 'form-control', placeholder:"Tell me something about album "%>
-      <% @album.errors.full_messages_for(:Description).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-
-
-  </div>
-
-  <div class="field form-group form-g ">
-    <%= form.label :tag %>
-    <%= form.text_field :all_tags , class: 'form-control', placeholder:"tags...."%>
-      <% @album.errors.full_messages_for(:all_tags).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-
-  </div>
-
- <div class="field form-group form-g">
-    <%= form.label :cover_photo %>
-    <%= form.file_field :cover_photo , class: 'form-control textc1',accept:'image/png,image/gif,image/jpeg'%>
-  <% @album.errors.full_messages_for(:cover_photo).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-
-
-  </div>
-  
-   <div class="field form-group form-g">
-    <%= form.label :images %>
-    <%= form.file_field :images ,multiple: true , class: 'form-control textc1',accept:'image/png,image/gif,image/jpeg'%>
-
-      <% @album.errors.full_messages_for(:images).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-
-  </div>
-       
-  <div class="field form-group  form-g">
-     <%= form.label :published %>
-     <%= form.check_box :published %>
-  </div> 
-  
-
-     
-
-
-    <div class="field form-group form-g">
-  
-    <%= form.number_field :user_id , id: :album_user_id, type: :hidden, class: 'form-control', value: current_user.id %>
-  </div>
-
-
-  <div class="actions form-g mb-3">
-    <%= form.submit class: 'textc1' %>
-  </div> 
-  
-<% end %>
-
-
-
-
-
-
+     <div class="field form-group form-g">
+             <%=form.label :Description %>
+             <%=form.text_area :Description , class: 'form-control', placeholder: "Tell me something about album "%>
+              <% @album.errors.full_messages_for(:Description).each do |message| %>
+                <div>
+                  <%=message%>
+                </div>
+             <% end %>
+       </div>
+      <div class="field form-group form-g ">
+            <%=form.label :tag %>
+              <%=form.text_field :all_tags , class: 'form-control', placeholder: "tags...."%>
+                  <% @album.errors.full_messages_for(:all_tags).each do |message| %>
+                    <div>
+                      <%=message%>
+                    </div>
+                  <% end %>
+       </div>
+      <div class="field form-group form-g">
+          <%=form.label :cover_photo %>
+            <%=form.file_field :cover_photo , class: 'form-control textc1',accept: 'image/png,image/gif,image/jpeg'%>
+              <%@album.errors.full_messages_for(:cover_photo).each do |message| %>
+                <div>
+                  <%=message %>
+                 </div>
+             <% end %>
+       </div>
+      <div class="field form-group form-g">
+        <%=form.label :images %>
+          <%=form.file_field :images ,multiple: true , class: 'form-control textc1',accept: 'image/png,image/gif,image/jpeg'%>
+            <% @album.errors.full_messages_for(:images).each do |message| %>
+              <div>
+                <%=message%>
+              </div>
+              <% end %>
+       </div>
+      <div class="field form-group  form-g">
+          <%=form.label :published %>
+           <%=form.check_box :published %>
+       </div>
+      
+      <div class="field form-group form-g">
+         <%=form.number_field :user_id , id: :album_user_id, type: :hidden, class: 'form-control', value: current_user.id %>
+      </div>
+      <div class="actions form-g mb-3">
+        <%=form.submit class:'textc1' %>
+      </div>
+ <% end %>
+      

@@ -1,64 +1,43 @@
 <h3>Albums</h3>
-
 <div class="container">
-     <div class="p-2">
-     <%=render 'home/search_form'%>
-  </div>
-    <%@albums.each do |album| %>
-
-
-<div class="card-group col-md-4 col-sm-12 col-lg-4 d-inline-flex h-100  mb-10-show">
-
-  <div class="card h-100">
-     <div class="card-header">
-        <div class="text-center">
-         <h2 class="d-inline">Album:</h2>
-        <h4 class="d-inline"><%= album.title %></h4>
-       </div>  
-
-   </div>
-
-  <div class="card-body">
-
-    <% if album.cover_photo.attached? %>
-       <%= link_to album do %>
-       <%= image_tag album.cover_photo,class:"card-img-top",size: '400x200'%>
-         <% end %>  
-     <%end%> 
-</div>
-
- <div class="card-footer text-center">
- 
- <p>
-   <strong>Published By:</strong>
-   <span><%= album.user.username%>  </span>
-   </p>
-    
-   
-  <p>
-    <strong>Tags:</strong> <%=album.all_tags%>
-   </p>
-
-  <p>
-    <strong>Created On: </strong> <%=album.created_at.to_time.strftime('%F')%>
-   </p>
- <p>
- <strong> Updated On: </strong><%=album.updated_at.time.strftime('%F')%>
-  </p>
-  <% if user_signed_in? %>
-
-  <div class="d-grid gap-10 d-md-block">
-  <%= link_to 'Edit', edit_album_path(album),class:"btn btn-secondary" %> 
-   <%= link_to 'Back', albums_path,class:"btn btn-dark"%>
-   <%= link_to 'Delete', album,method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"%>
-</div>
-<%end%>
-  
-  </div>
-
-   </div>
-</div>
-
-
-<%end%>
+      <div class="p-2">
+           <%=render 'home/search_form'%>
+       </div>
+     <%@albums.each do |album| %>
+          <div class="card-group col-md-4 col-sm-12 col-lg-4 d-inline-flex h-100  mb-10-show">
+            <div class="card h-100">
+                  <div class="card-header">
+                      <div class="text-center">
+                      <h2 class="d-inline">Album:</h2>
+                      <h4 class="d-inline"><%= album.title %></h4> </div>
+                    </div>
+                <div class="card-body">
+                    <% if album.cover_photo.attached? %>
+                            <%=link_to album do %>
+                              <%=image_tag album.cover_photo,class: "card-img-top",size: '400x200'%>
+                           <% end %>
+                       <%end%>
+                </div>
+                <div class="card-footer text-center">
+                         <p> <strong>Published By:</strong> <span><%= album.user.username%>  </span> </p>
+                         <p> <strong>Tags:</strong>
+                          <%=album.all_tags%>
+                        </p>
+                        <p> <strong>Created On: </strong>
+                          <%=album.created_at.to_time.strftime( '%F')%>
+                        </p>
+                        <p> <strong> Updated On: </strong>
+                          <%=album.updated_at.time.strftime( '%F')%>
+                        </p>
+                        <% if user_signed_in? %>
+                          <div class="d-grid gap-10 d-md-block">
+                            <%=link_to 'Edit', edit_album_path(album),class: "btn btn-secondary" %>
+                              <%=link_to 'Back', albums_path,class: "btn btn-dark"%>
+                                <%=link_to 'Delete', album,method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
+                          </div>
+                        <%end%>
+                    </div>
+              </div>
+          </div>
+      <%end%>
 </div>

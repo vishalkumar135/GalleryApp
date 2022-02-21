@@ -1,11 +1,7 @@
 
 <div  class ="tag ">
-<%= search_form_for @q do |f| %>
-
-   
-  <%= f.search_field :tags_name_eq ,class:"textc1" ,placeholder:"search by tag name..." %>
-  
-  <%=f.submit class:'textc1 '%>
-  
-<% end %>
+    <%= search_form_for @q do |f| %>
+        <%= f.search_field :tags_name_cont_any ,class:"textc1" ,placeholder:"search by tag name..." %>
+        <%=f.submit class:'textc1 '%> 
+    <% end %>
 </div>

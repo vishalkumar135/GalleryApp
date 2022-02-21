@@ -7,18 +7,18 @@ class AlbumsController < ApplicationController
 
   if user_signed_in?
     @q = current_user.albums.published.ransack(params[:q])
-    @albums = @q.result.includes(:tags)
+    @albums = @q.result(distinct:true).includes(:tags)
   else
     @q = Album.ransack(params[:q])
-    @albums = @q.result.includes(:tags)
+    @albums = @q.result(distinct:true).includes(:tags)
        
   end 
 end
   def show
   end
-
+  
   def new
-    
+   
     @album = current_user.albums.new
   end
   def create
@@ -44,9 +44,9 @@ end
     end
   end
   def draft
-          
+         
    @q= current_user.albums.unpublished. ransack(params[:q])
-   @albums = @q.result.includes(:tags)
+   @albums = @q.result(distinct:true).includes(:tags)
   end
 
    def destroy
