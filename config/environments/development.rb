@@ -73,19 +73,17 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
-  config.action_mailer.default_url_options = { host: 'https://vishal-gallery-app.herokuapp.com'}
+  config.action_mailer.default_url_options =  { host: 'localhost', port: 3000 }
   # config.action_mailer.perform_deliveries = true
-  
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :user_name => '5c536eeb3ea836',
-    :password => '0b333481fe2286',
+    :user_name => '8a1a882c07a350',
+    :password => 'ef14194b17d2e9',
     :address => 'smtp.mailtrap.io',
     :domain => 'smtp.mailtrap.io',
     :port => '2525',
     :authentication => :cram_md5
   }
-  
 
 
 config.active_storage.replace_on_assign_to_many = false
